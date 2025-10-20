@@ -1,0 +1,45 @@
+@import "index";
+@import 'portfolio_detail';
+
+.service-detail-main{
+  margin-left: 270px;
+}
+.portfolio {
+  &__information {
+    &-des {
+      ul li {
+        border-left: 4px solid #ddd;
+        padding-left: 1rem;
+
+        a {
+          color: #333;
+          text-decoration: none;
+
+          &:hover {
+            color: $accent-color;
+          }
+        }
+
+        &:hover {
+          border-left: 4px solid $accent-color;
+        }
+      }
+    }
+  }
+
+  &__services {
+    display: grid;
+    gap: 1rem;
+
+    &-img {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+@media (max-width: 1201px) {
+  .service-detail-main{
+    margin-left: 0;
+  }
+}

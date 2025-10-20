@@ -1,0 +1,542 @@
+@import 'main';
+
+// Sider
+.sider-toggle-btn {
+  display: none;
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  background: $accent-color;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+}
+
+.sider.active {
+  left: 0;
+}
+
+.sider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $nav-mobile-background-color;
+  font-family: $nav-font;
+  min-height: 100vh;
+  max-width: 270px;
+  padding: 15px;
+  z-index: 999;
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &__avatar {
+    width: 100%;
+
+    img {
+      width: 115px;
+      height: 115px;
+      object-fit: cover;
+      border: 0.5rem solid $dark-surface-color;
+    }
+  }
+
+  &__name {
+    color: $nav-hover-color;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__link {
+    ul li {
+      background: transparent;
+
+      a {
+        display: inline-flex; // hoặc block nếu muốn full-width
+        align-items: center;
+        padding: 0.7rem; // padding thực sự cho vùng bấm
+        text-decoration: none;
+        color: $nav-hover-color;
+        background: $dark-surface-color; // nền *chỉ* của a
+        border-radius: 50%;
+
+        &:hover {
+          background: $accent-color; // tuỳ chọn effect nhẹ
+        }
+      }
+    }
+  }
+
+  &__content {
+    &-box {
+      a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.1rem;
+        text-decoration: none;
+        color: $nav-color;
+        
+        &:hover,
+        &.active {
+          color: $nav-hover-color;
+        }
+
+        &:hover i,
+        &.active i{
+          color: $accent-color;
+        }
+        span {
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}
+
+
+//  Main
+main {
+  margin-left: 270px;
+}
+
+.isme {
+  background-image: url("/Portfolio_HTML_CSS_JS/assets/img/Gojo.jpg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem;
+  background-position: center;
+  color: var(--surface-color);
+}
+
+.barbox {
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  p {
+    padding-bottom: 60px;
+  }
+}
+
+.about {
+  padding-top: 60px;
+
+  &__padding {
+    padding-bottom: 60px; // nếu bạn không muốn gap 60px ở khối chứa
+  }
+
+  &__img {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__info {
+    &-des {
+      p {
+        padding: 0;
+      }
+
+      &-me {
+        ul {
+          list-style-type: none;
+          display: grid;
+          gap: 1rem;
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            i {
+              color: $accent-color;
+              font-size: 1rem;
+            }
+
+            p {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__client {
+    padding: 60px 0 60px 0;
+
+    &-info {
+      display: grid;
+      gap: 10px;
+
+      span {
+        font-size: 2.9rem;
+
+        i {
+          color: $accent-color;
+        }
+
+        span {
+          font-weight: 700;
+        }
+      }
+
+      p {
+        margin-left: 4.5rem;
+      }
+    }
+  }
+}
+
+// Skill
+.skill {
+  background: $background-skill;
+  padding: 60px 0;
+
+  &__progress-item {
+    display: grid;
+    gap: 10px;
+
+    &-box {
+      display: grid;
+
+      &-space {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: $heading-font;
+        font-size: 0.9rem;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .progress-bar {
+      background: $accent-color;
+    }
+  }
+}
+
+// resume
+.resume {
+  padding: 60px 0;
+
+  &__box-item {
+    display: grid;
+
+    h1 {
+      font-size: 1.6rem;
+      margin: 1rem 0;
+    }
+
+    &-unity {
+      padding: 0 1rem;
+      border-left: 2px solid $accent-color;
+      position: relative;
+
+      h5 {
+        padding: 0.9rem;
+        font-size: 1rem;
+        font-weight: bold;
+        font-family: $heading-font;
+      }
+
+      h3 {
+        line-height: 18px;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: color-mix(in srgb, var(--default-color), transparent 20%);
+        margin-bottom: 10px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50px;
+        left: -9px;
+        top: 0;
+        background: var(--background-color);
+        border: 2px solid var(--accent-color);
+      }
+    }
+  }
+}
+
+// contact
+.contact {
+  padding: 60px 0;
+  background: $background-skill;
+
+  &__forms {
+    height: 100%;
+    padding: 30px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+    background: $background-color;
+  }
+
+  &__location {
+    height: 100%;
+    padding: 30px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    background: $background-color;
+
+    &-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      i {
+        font-size: 1.4rem;
+        display: inline-flex;
+        /* hoặc inline-block + flex cho parent */
+        align-items: center;
+        /* căn dọc */
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        padding: 1.4rem;
+        color: $accent-color;
+        border-radius: 50%;
+        background: lightblue;
+      }
+
+      &-des {
+        h2 {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__submit {
+    .btn {
+      padding: 0.7rem 2.4rem;
+      background-color: $accent-color;
+      border: none;
+      border-radius: 2rem;
+    }
+  }
+}
+
+// Portfolios
+.portfolios {
+  background: $background-skill;
+  padding: 60px 0;
+
+  &__type {
+    button {
+      border: none;
+      background: none;
+      text-transform: uppercase;
+
+
+
+    }
+  }
+
+  .active {
+    color: $accent-color;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    .product-card {
+      width: 100%;
+      background: $background-color;
+      box-shadow: 0 6px 30px rgba(255, 255, 255, 0.06);
+      overflow: hidden; // bắt buộc để ảnh phóng to không tràn ra
+      border-radius: 10px; // tuỳ chọn cho đẹp
+      transition: transform 0.25s ease; // nếu bạn vẫn muốn dịch card
+      position: relative;
+      z-index: 0;
+
+      img {
+        width: 100%;
+        display: block;
+        transition: transform 0.45s ease; // mượt cho ảnh
+        transform-origin: center center;
+        will-change: transform; // hint cho trình duyệt
+        z-index: 0;
+      }
+
+      &:hover {
+        transform: translateX(-3px); // giữ nếu bạn muốn card dịch nhẹ
+
+        &::before {
+          position: absolute;
+          content: '';
+          background: rgba(0, 0, 0, 0.1);
+          width: 100%;
+          height: 100%;
+        }
+
+        img {
+          transform: scale(1.08); // thay đổi hệ số scale tuỳ bạn (1.05 → 1.2)
+        }
+
+        .badge,
+        span {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .badges,
+      span {
+        position: absolute;
+        top: 7%; // đặt vị trí cụ thể
+        left: 5%; // hoặc right: 12px;
+        z-index: 2;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        background: $accent-color;
+        color: #fff;
+        opacity: 0;
+
+        transition: opacity 0.3s ease;
+      }
+    }
+  }
+}
+
+.services {
+
+  padding: 60px 0;
+
+  .services__box {
+    display: flex;
+    gap: 1rem; // fill available column height
+    padding: 18px;
+    border-radius: .6rem;
+    background: #ffffff;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 8px rgba(18, 38, 63, 0.06);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    overflow: hidden;
+
+    // icon on top
+    i {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: $accent-color; // uses Bootstrap primary color
+      line-height: 1;
+    }
+
+    .services__box-des {
+      h5 {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      p {
+        margin: .6rem 0 0;
+        font-size: .92rem;
+        color: rgba(0, 0, 0, 0.65);
+        line-height: 1.45;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px #12263f1f;
+      text-decoration: none;
+    }
+  }
+}
+
+// Footer
+// Footer
+
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+  .sider-toggle-btn {
+    display: block;
+  }
+
+  .sider {
+    left: -270px;
+  }
+
+  main {
+    margin-left: 0;
+  }
+}
+
+
+
+/* ==== REVEAL ON SCROLL (fixed) ==== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(18px) scale(.995);
+  transition: opacity 560ms cubic-bezier(.2,.8,.2,1),
+              transform 560ms cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform;
+  transition-delay: var(--delay, 0s); 
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.reveal-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.reveal-hidden[style*="--i"] {
+  transition-delay: calc(var(--i, 0) * 0.07s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden, .reveal-show {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

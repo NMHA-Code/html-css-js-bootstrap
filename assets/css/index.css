@@ -1,0 +1,508 @@
+@charset "UTF-8";
+/* Global colors (light mode defaults) */
+/* Nav related */
+/* Dark theme overrides */
+/* 
+  Ghi ra CSS custom properties (giữ lại để runtime override bằng .dark-background / .light-background)
+  Dùng interpolation để chèn giá trị SCSS vào CSS custom property.
+*/
+:root {
+  /* fonts */
+  --default-font: Roboto, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --heading-font: Raleway, sans-serif;
+  --nav-font: Poppins, sans-serif;
+  /* colors */
+  --background-color: #ffffff;
+  --default-color: #272829;
+  --heading-color: #050d18;
+  --accent-color: #149ddd;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  /* nav */
+  --nav-color: #a8a9b4;
+  --nav-hover-color: #ffffff;
+  --nav-mobile-background-color: #040b14;
+  --nav-dropdown-background-color: #040b14;
+  --nav-dropdown-color: #a8a9b4;
+  --nav-dropdown-hover-color: #ffffff;
+}
+
+/* Light background modifier (overrides) */
+.light-background {
+  --background-color: #f4fafd;
+  --surface-color: #ffffff;
+}
+
+/* Dark background modifier (overrides for dark theme) */
+.dark-background {
+  --background-color: #040b14;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #151f2b;
+  --contrast-color: #ffffff;
+  /* (tuỳ muốn) có thể override nav colors trong dark mode nếu cần */
+  /* --nav-color: ...; */
+}
+
+/* --- tiện ích: map các biến nếu muốn dùng bằng mixin --- */
+/* Bạn có thể dùng mixin này để áp trực tiếp sang thuộc tính CSS nếu cần */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--default-font);
+  color: var(--default-color);
+  background-color: var(--background-color);
+  min-height: 100vh;
+}
+
+/* Chú ý: nếu bạn muốn dùng trực tiếp biến SCSS thay vì CSS custom properties,
+   dùng $default-color, $accent-color... trong file scss của bạn.
+   Mình giữ cả 2 để bạn vừa tiện dev vừa có thể toggle runtime bằng class. */
+.sider-toggle-btn {
+  display: none;
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  background: #149ddd;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+}
+
+.sider.active {
+  left: 0;
+}
+
+.sider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #040b14;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  max-width: 270px;
+  padding: 15px;
+  z-index: 999;
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sider__avatar {
+  width: 100%;
+}
+.sider__avatar img {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  border: 0.5rem solid #151f2b;
+}
+.sider__name {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.sider__link ul li {
+  background: transparent;
+}
+.sider__link ul li a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem;
+  text-decoration: none;
+  color: #ffffff;
+  background: #151f2b;
+  border-radius: 50%;
+}
+.sider__link ul li a:hover {
+  background: #149ddd;
+}
+.sider__content-box a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #a8a9b4;
+}
+.sider__content-box a:hover, .sider__content-box a.active {
+  color: #ffffff;
+}
+.sider__content-box a:hover i, .sider__content-box a.active i {
+  color: #149ddd;
+}
+.sider__content-box a span {
+  letter-spacing: 1px;
+}
+
+main {
+  margin-left: 270px;
+}
+
+.isme {
+  background-image: url("/Portfolio_HTML_CSS_JS/assets/img/Gojo.jpg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem;
+  background-position: center;
+  color: var(--surface-color);
+}
+
+.barbox h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.barbox h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  bottom: 0;
+}
+.barbox p {
+  padding-bottom: 60px;
+}
+
+.about {
+  padding-top: 60px;
+}
+.about__padding {
+  padding-bottom: 60px;
+}
+.about__img img {
+  width: 100%;
+}
+.about__info-des p {
+  padding: 0;
+}
+.about__info-des-me ul {
+  list-style-type: none;
+  display: grid;
+  gap: 1rem;
+}
+.about__info-des-me ul li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.about__info-des-me ul li i {
+  color: #149ddd;
+  font-size: 1rem;
+}
+.about__info-des-me ul li p {
+  margin-bottom: 0;
+}
+.about__client {
+  padding: 60px 0 60px 0;
+}
+.about__client-info {
+  display: grid;
+  gap: 10px;
+}
+.about__client-info span {
+  font-size: 2.9rem;
+}
+.about__client-info span i {
+  color: #149ddd;
+}
+.about__client-info span span {
+  font-weight: 700;
+}
+.about__client-info p {
+  margin-left: 4.5rem;
+}
+
+.skill {
+  background: #f4fafd;
+  padding: 60px 0;
+}
+.skill__progress-item {
+  display: grid;
+  gap: 10px;
+}
+.skill__progress-item-box {
+  display: grid;
+}
+.skill__progress-item-box-space {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Raleway", sans-serif;
+  font-size: 0.9rem;
+}
+.skill__progress-item-box-space p {
+  margin-bottom: 0;
+}
+.skill__progress-item .progress-bar {
+  background: #149ddd;
+}
+
+.resume {
+  padding: 60px 0;
+}
+.resume__box-item {
+  display: grid;
+}
+.resume__box-item h1 {
+  font-size: 1.6rem;
+  margin: 1rem 0;
+}
+.resume__box-item-unity {
+  padding: 0 1rem;
+  border-left: 2px solid #149ddd;
+  position: relative;
+}
+.resume__box-item-unity h5 {
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+}
+.resume__box-item-unity h3 {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-bottom: 10px;
+}
+.resume__box-item-unity::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+}
+
+.contact {
+  padding: 60px 0;
+  background: #f4fafd;
+}
+.contact__forms {
+  height: 100%;
+  padding: 30px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+.contact__location {
+  height: 100%;
+  padding: 30px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+.contact__location-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.contact__location-info-item i {
+  font-size: 1.4rem;
+  display: inline-flex;
+  /* hoặc inline-block + flex cho parent */
+  align-items: center;
+  /* căn dọc */
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 1.4rem;
+  color: #149ddd;
+  border-radius: 50%;
+  background: lightblue;
+}
+.contact__location-info-item-des h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.contact__location-info-item-des p {
+  margin-bottom: 0;
+}
+.contact__submit .btn {
+  padding: 0.7rem 2.4rem;
+  background-color: #149ddd;
+  border: none;
+  border-radius: 2rem;
+}
+
+.portfolios {
+  background: #f4fafd;
+  padding: 60px 0;
+}
+.portfolios__type button {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+}
+.portfolios .active {
+  color: #149ddd;
+}
+.portfolios__item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.portfolios__item .product-card {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 6px 30px rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.25s ease;
+  position: relative;
+  z-index: 0;
+}
+.portfolios__item .product-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.45s ease;
+  transform-origin: center center;
+  will-change: transform;
+  z-index: 0;
+}
+.portfolios__item .product-card:hover {
+  transform: translateX(-3px);
+}
+.portfolios__item .product-card:hover::before {
+  position: absolute;
+  content: "";
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+}
+.portfolios__item .product-card:hover img {
+  transform: scale(1.08);
+}
+.portfolios__item .product-card:hover .badge,
+.portfolios__item .product-card:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+.portfolios__item .product-card .badges,
+.portfolios__item .product-card span {
+  position: absolute;
+  top: 7%;
+  left: 5%;
+  z-index: 2;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  background: #149ddd;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.services {
+  padding: 60px 0;
+}
+.services .services__box {
+  display: flex;
+  gap: 1rem;
+  padding: 18px;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 8px rgba(18, 38, 63, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  overflow: hidden;
+}
+.services .services__box i {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: #149ddd;
+  line-height: 1;
+}
+.services .services__box .services__box-des h5 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.85);
+}
+.services .services__box .services__box-des p {
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 1.45;
+}
+.services .services__box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(18, 38, 63, 0.1215686275);
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+  .sider-toggle-btn {
+    display: block;
+  }
+  .sider {
+    left: -270px;
+  }
+  main {
+    margin-left: 0;
+  }
+}
+/* ==== REVEAL ON SCROLL (fixed) ==== */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(18px) scale(0.995);
+  transition: opacity 560ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+  transition-delay: var(--delay, 0s);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.reveal-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-hidden[style*="--i"] {
+  transition-delay: calc(var(--i, 0) * 0.07s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden, .reveal-show {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
