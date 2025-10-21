@@ -63,7 +63,7 @@ function renderProducts(list) {
 
    portfolios_item.innerHTML = list.map(p => `
     <div class="product-card" data-id="${p.id}" data-category="${p.category}">
-      <a href="/Portfolio_HTML_CSS_JS/portfolio_detail.html?category=${encodeURIComponent(p.category)}&id=${p.id}">
+      <a href="portfolio_detail.html?category=${encodeURIComponent(p.category)}&id=${p.id}">
         <img src="${p.images && p.images[0] ? p.images[0] : ''}" alt="${(p.title)}" />
         <span class="badges">${(p.category)}</span>
       </a>
